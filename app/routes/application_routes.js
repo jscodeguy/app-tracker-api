@@ -43,6 +43,16 @@ router.get('/application', requireToken, (req, res, next) => {
 		.catch(next)
 })
 
-
+// SHOW
+// GET /application/5a7db6c74d55bc51bdf39793
+router.get('/application/:id', requireToken, (req, res, next) => {
+	// req.params.id will be set based on the `:id` in the route
+	Application.findById(req.params.id)
+		.then(handle404)
+		// if `findById` is succesful, respond with 200 and "application" JSON
+		.then((application) => res.status(200).json({ application: application.toObject() }))
+		// if an error occurs, pass it to the handler
+		.catch(next)
+})
 
 module.exports = router
