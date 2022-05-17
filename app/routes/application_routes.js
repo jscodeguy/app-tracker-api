@@ -55,4 +55,21 @@ router.get('/application/:id', requireToken, (req, res, next) => {
 		.catch(next)
 })
 
+// CREATE
+// POST /application
+router.post('/application', requireToken, (req, res, next) => {
+	// set owner of new application to be current user
+	req.body.application.owner = req.user.id
+
+	Application.create(req.body.application)
+		// respond to succesful `create` with status 201 and JSON of new "application"
+		.then((application) => {
+			res.status(201).json({ application: application.toObject() })
+		})
+		// if an error occurs, pass it off to our error handler
+		// the error handler needs the error message and the `res` object so that it
+		// can send an error message back to the client
+		.catch(next)
+})
+
 module.exports = router
