@@ -2,22 +2,42 @@ const mongoose = require('mongoose')
 
 const applicationSchema = new mongoose.Schema(
 	{
-		title: {
+		jobTitle: {
 			type: String,
-			required: true,
+			required: true
 		},
-		text: {
+		dateApplied: {
+			type: String
+		},
+		company: {
 			type: String,
-			required: true,
+			required: true
+		},
+		companyPage: {
+			type: String
+		},
+		recievedResponse: {
+			type: Boolean,
+		},
+		rejected: {
+			type: Boolean,
+			default: false
+		},
+		followedUp: {
+			type: Boolean,
+			default: false
+		},
+		salaryOffer: {
+			type: Number
 		},
 		owner: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'User',
-			required: true,
+			required: true
 		},
 	},
 	{
-		timestamps: true,
+		timestamps: true
 	}
 )
 
