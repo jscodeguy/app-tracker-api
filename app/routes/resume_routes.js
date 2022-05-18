@@ -43,6 +43,16 @@ router.get('/resume', requireToken, (req, res, next) => {
 		.catch(next)
 })
 
-
+// SHOW
+// GET /resume/5a7db6c74d55bc51bdf39793
+router.get('/resume/:id', requireToken, (req, res, next) => {
+	// req.params.id will be set based on the `:id` in the route
+	Resume.findById(req.params.id)
+		.then(handle404)
+		// if `findById` is succesful, respond with 200 and "resume" JSON
+		.then((resume) => res.status(200).json({ resume: resume.toObject() }))
+		// if an error occurs, pass it to the handler
+		.catch(next)
+})
 
 module.exports = router
