@@ -29,13 +29,15 @@ const router = express.Router()
 
 // INDEX
 // GET /application
-router.get('/application', requireToken, (req, res, next) => {
+router.get('/application', (req, res, next) => {
 	Application.find()
 		.then((application) => {
 			// `application` will be an array of Mongoose documents
 			// we want to convert each one to a POJO, so we use `.map` to
 			// apply `.toObject` to each one
-			return application.map((application) => application.toObject())
+			console.log('this is the req', application)
+			return application.map((application) => application.toObject()
+			)
 		})
 		// respond with status 200 and JSON of the application
 		.then((application) => res.status(200).json({ application: application }))
