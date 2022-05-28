@@ -35,7 +35,7 @@ router.get('/application', (req, res, next) => {
 			// `application` will be an array of Mongoose documents
 			// we want to convert each one to a POJO, so we use `.map` to
 			// apply `.toObject` to each one
-			console.log('this is the req', application)
+			console.log('this is the shown applications', application)
 			return application.map((application) => application.toObject()
 			)
 		})
