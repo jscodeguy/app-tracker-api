@@ -16,7 +16,7 @@ const applicationSchema = new mongoose.Schema(
 		companyPage: {
 			type: String
 		},
-		recievedResponse: {
+		receivedResponse: {
 			type: Boolean,
 		},
 		rejected: {

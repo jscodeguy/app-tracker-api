@@ -18,6 +18,7 @@ Tired of having a boring google spread sheet to keep track of your countless job
 - Mongoose
 - Express
 - Node.js
+- Filestack external API
 
 ## Stretch goals
 - add section for users to upload resumes and review company =s they've tried to apply to
